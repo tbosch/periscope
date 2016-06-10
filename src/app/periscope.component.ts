@@ -1,7 +1,8 @@
 import {Component} from '@angular/core';
 import {HTTP_PROVIDERS} from '@angular/http';
 import {ROUTER_DIRECTIVES} from '@angular/router';
-import {AngularFire, AuthMethods, AuthProviders, FIREBASE_PROVIDERS, FirebaseAuthConfig, FirebaseAuthState, FirebaseUrl} from 'angularfire2';
+import {AngularFire, AuthMethods, AuthProviders, FIREBASE_PROVIDERS, FirebaseAuthConfig, FirebaseConfig} from 'angularfire2';
+import {FirebaseAuthState} from 'angularfire2/providers/auth_backend';
 
 import {GithubStore} from './github/store';
 import {PrBoardService} from './pr-board.service';
@@ -41,7 +42,12 @@ import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs';
   ],
   providers: [
     HTTP_PROVIDERS, FIREBASE_PROVIDERS,
-    {provide: FirebaseUrl, useValue: 'https://ngperiscope.firebaseio.com'}, {
+    {provide: FirebaseConfig, useValue: {
+      apiKey: "AIzaSyDtDqmYnJVGCBSyiIABFHpo5Hvmu3kjvpU",
+      authDomain: "project-934503789961360947.firebaseapp.com",
+      databaseURL: "https://project-934503789961360947.firebaseio.com",
+      storageBucket: "project-934503789961360947.appspot.com",
+    }}, {
       provide: FirebaseAuthConfig,
       useValue: {provider: AuthProviders.Github, method: AuthMethods.Popup}
     },
@@ -49,10 +55,10 @@ import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs';
   ]
 })
 export class PeriscopeAppComponent {
-  authState: FirebaseAuthState;
+  authState: FirebaseAuthState | void;
 
   constructor(private af: AngularFire) {
-    this.authState = af.auth.getAuth() as any as FirebaseAuthState;
+    this.authState = af.auth.getAuth();
     console.log(this.authState);
   }
 
