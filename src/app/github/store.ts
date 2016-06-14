@@ -15,7 +15,8 @@ import {Subscriber} from 'rxjs/Subscriber';
 
 import {Event, Issue, LabelRef, PullRequest} from './v3';
 
-import {AngularFire, FirebaseObjectObservable, FirebaseAuth} from 'angularfire2';
+import {AngularFire, FirebaseObjectObservable, AngularFireAuth} from 'angularfire2';
+import {FirebaseAuthState} from 'angularfire2/providers/auth_backend';
 
 import * as firebase from 'firebase';
 
@@ -174,7 +175,7 @@ export class GithubStore {
   }
 
   private _get(path: string, params: {[k: string]: any} = {}): Observable<Response> {
-    var authState: firebase.User = firebase.auth().currentUser;
+    var authState: FirebaseAuthState = this.af.auth.getAuth();
     console.log(authState);
     var accessToken: string = (<any>authState).github.accessToken;
     var qParams: string[] = [];
