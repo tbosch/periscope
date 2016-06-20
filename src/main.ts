@@ -1,5 +1,5 @@
 import {enableProdMode, SystemJsComponentResolver, ComponentResolver} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser';
+import {bootstrap} from '@angular/platform-browser-dynamic';
 import {PeriscopeAppComponent, environment} from './app';
 import {RuntimeCompiler} from '@angular/compiler';
 import {provideRouter} from '@angular/router';
