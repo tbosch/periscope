@@ -6,10 +6,10 @@ import {provideRouter} from '@angular/router';
 
 const routes = [
   {
-    path: '/triage_pr',
+    path: 'triage_pr',
     component: './app/+triage-pr',
   },
-  {path: '/sync', component: './app/+sync'}
+  {path: 'sync', component: './app/+sync'}
 ];
 
 
