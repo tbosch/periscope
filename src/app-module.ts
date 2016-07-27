@@ -1,8 +1,9 @@
 import {NgModule} from '@angular/core';
 import {PeriscopeAppComponent} from './app';
+import {FormsModule} from '@angular/forms';
 import {BrowserModule} from '@angular/platform-browser';
 import {HTTP_PROVIDERS} from '@angular/http';
-import {provideRouter} from '@angular/router';
+import {provideRouter, RouterModule} from '@angular/router';
 import {FIREBASE_PROVIDERS, FirebaseUrl, FirebaseAppConfig, AuthProviders, AuthMethods, FirebaseAuthConfig} from 'angularfire2';
 
 const routes = [
@@ -16,9 +17,9 @@ const routes = [
 
 @NgModule({
   declarations: [PeriscopeAppComponent],
-  imports: [BrowserModule],
+  imports: [BrowserModule, FormsModule, RouterModule],
   providers: [
-    provideRouter(routes), 
+    provideRouter(routes),
     FIREBASE_PROVIDERS,
     // HTTP_PROVIDERS,
     {provide: FirebaseUrl, useValue: 'https://ngperiscope.firebaseio.com'}, {
