@@ -25,6 +25,7 @@ import {MD_TABS_DIRECTIVES} from '@angular2-material/tabs';
   templateUrl: 'periscope.component.html',
   styleUrls: ['periscope.component.css'],
   directives: [
+    ROUTER_DIRECTIVES,
     MD_SIDENAV_DIRECTIVES,
     MD_CARD_DIRECTIVES,
     MD_TOOLBAR_DIRECTIVES,
